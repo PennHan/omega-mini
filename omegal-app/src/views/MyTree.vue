@@ -36,36 +36,36 @@ const { t } = useI18n()
       </div>
     </div>
     <div class="grid grid-cols-2 gap-4 p-4">
-      <div class="flex flex-1 flex-col gap-3 rounded-xl bg-card-light p-4 shadow-subtle">
-        <div class="text-ome-orange">
-          <Icon icon="material-symbols:public" class="text-[28px]" />
+      <div class="flex flex-1 flex-col gap-3 rounded-xl bg-card-light p-4 shadow-soft shadow-lg">
+        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#FF8C42]/15 text-[#FF8C42]">
+          <Icon icon="material-symbols:public" class="!text-3xl" />
         </div>
         <div class="flex flex-col gap-1">
           <h2 class="text-sm font-medium leading-tight text-subtext-light">{{ t('myTree.stats.region.label') }}</h2>
           <p class="text-base font-semibold leading-normal text-text-light">{{ t('myTree.stats.region.value') }}</p>
         </div>
       </div>
-      <div class="flex flex-1 flex-col gap-3 rounded-xl bg-card-light p-4 shadow-subtle">
-        <div class="text-ome-orange">
-          <Icon icon="material-symbols:thermostat" class="text-[28px]" />
+      <div class="flex flex-1 flex-col gap-3 rounded-xl bg-card-light p-4 shadow-soft shadow-lg">
+        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#FF8C42]/15 text-[#FF8C42]">
+          <Icon icon="material-symbols:thermostat" class="!text-3xl" />
         </div>
         <div class="flex flex-col gap-1">
           <h2 class="text-sm font-medium leading-tight text-subtext-light">{{ t('myTree.stats.climate.label') }}</h2>
           <p class="text-base font-semibold leading-normal text-text-light">{{ t('myTree.stats.climate.value') }}</p>
         </div>
       </div>
-      <div class="flex flex-1 flex-col gap-3 rounded-xl bg-card-light p-4 shadow-subtle">
-        <div class="text-ome-orange">
-          <Icon icon="material-symbols:eco" class="text-[28px]" />
+      <div class="flex flex-1 flex-col gap-3 rounded-xl bg-card-light p-4 shadow-soft shadow-lg">
+        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#FF8C42]/15 text-[#FF8C42]">
+          <Icon icon="material-symbols:eco" class="!text-3xl" />
         </div>
         <div class="flex flex-col gap-1">
           <h2 class="text-sm font-medium leading-tight text-subtext-light">{{ t('myTree.stats.growth.label') }}</h2>
           <p class="text-base font-semibold leading-normal text-text-light">{{ t('myTree.stats.growth.value') }}</p>
         </div>
       </div>
-      <div class="flex flex-1 flex-col gap-3 rounded-xl bg-card-light p-4 shadow-subtle">
-        <div class="text-ome-orange">
-          <Icon icon="material-symbols:science" class="text-[28px]" />
+      <div class="flex flex-1 flex-col gap-3 rounded-xl bg-card-light p-4 shadow-soft shadow-lg">
+        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#FF8C42]/15 text-[#FF8C42]">
+          <Icon icon="material-symbols:science" class="!text-3xl" />
         </div>
         <div class="flex flex-col gap-1">
           <h2 class="text-sm font-medium leading-tight text-subtext-light">{{ t('myTree.stats.yield.label') }}</h2>
@@ -74,7 +74,7 @@ const { t } = useI18n()
       </div>
     </div>
     <div class="mt-auto mb-6 px-4 pt-4">
-      <button class="flex h-14 w-full items-center justify-center rounded-xl bg-ome-gold px-6 text-base font-bold text-ome-blue shadow-lg transition-transform duration-200 ease-in-out hover:scale-[1.02]">
+      <button class="flex h-14 w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#F9E18B] via-[#F2C964] to-[#E5B347] px-6 text-base font-bold text-white shadow-lg shadow-primary-blue/30 transition-transform duration-200 ease-in-out hover:scale-[1.02]">
         {{ t('myTree.action') }}
       </button>
     </div>
