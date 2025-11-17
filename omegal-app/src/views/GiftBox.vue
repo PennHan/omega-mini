@@ -1,15 +1,22 @@
 <script setup>
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 
 const { t } = useI18n()
+const router = useRouter()
 </script>
 
 <template>
   <div class="relative w-full min-h-screen">
     <div class="sticky top-0 z-20 bg-background-light/80 backdrop-blur-sm">
       <div class="flex items-center p-4 pb-3">
-        <button class="flex items-center justify-center w-10 h-10 text-text-primary">
+        <button
+          type="button"
+          class="flex items-center justify-center w-10 h-10 text-text-primary"
+          aria-label="Back"
+          @click="router.back()"
+        >
           <Icon icon="material-symbols:arrow-back" class="text-2xl" />
         </button>
         <h2 class="flex-1 text-lg font-bold tracking-tight text-center text-text-primary">{{ t('giftBox.header') }}</h2>
@@ -132,7 +139,7 @@ const { t } = useI18n()
       </div>
     </main>
     <div class="fixed bottom-0 left-0 right-0 z-20 p-4 bg-background-light/80 backdrop-blur-sm">
-      <button class="w-full h-14 text-base font-bold text-white rounded-full shadow-lg bg-primary-blue hover:bg-primary-blue/90 transition-colors">
+      <button class="w-full h-14 text-base font-bold text-white rounded-full shadow-lg bg-gradient-to-r from-[#F9E18B] via-[#F2C964] to-[#E5B347] hover:opacity-95 transition-opacity">
         <span>{{ t('giftBox.cta') }}</span>
       </button>
     </div>
