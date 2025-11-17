@@ -1,3 +1,10 @@
+<script setup>
+import LanguageSwitcher from './components/LanguageSwitcher.vue'
+</script>
+
 <template>
-  <router-view />
+  <div class="relative">
+    <LanguageSwitcher />
+    <router-view />
+  </div>
 </template>
