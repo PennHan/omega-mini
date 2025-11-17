@@ -2,8 +2,10 @@
 import { computed, ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 
 const { t } = useI18n()
+const router = useRouter()
 const activeTab = ref('videos')
 const highlightTransform = computed(() => (activeTab.value === 'videos' ? 'translateX(0)' : 'translateX(100%)'))
 </script>
@@ -11,9 +13,14 @@ const highlightTransform = computed(() => (activeTab.value === 'videos' ? 'trans
 <template>
   <div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light group/design-root overflow-x-hidden">
     <div class="flex items-center bg-transparent p-4 pb-2 justify-between absolute top-0 left-0 right-0 z-10">
-      <div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
+      <button
+        type="button"
+        class="flex size-10 shrink-0 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm"
+        aria-label="Back"
+        @click="router.back()"
+      >
         <Icon icon="material-symbols:arrow-back-ios-new" class="text-white text-2xl" />
-      </div>
+      </button>
       <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">{{ t('journey.header') }}</h2>
       <div class="flex size-10 shrink-0 items-center"></div>
     </div>
