@@ -1,8 +1,31 @@
 <script setup>
+import { computed, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
 
 const { t } = useI18n()
+const route = useRoute()
+const currentPath = computed(() => route.path)
+const activeTab = ref('home')
+
+const syncActiveTab = (path) => {
+  if (path === '/dashboard') {
+    activeTab.value = 'home'
+  }
+}
+
+watch(
+  () => route.path,
+  (path) => {
+    syncActiveTab(path)
+  },
+  { immediate: true }
+)
+
+const handleTabClick = (tab) => {
+  activeTab.value = tab
+}
 </script>
 
 <template>
@@ -17,10 +40,10 @@ const { t } = useI18n()
             <p class="mt-1 text-sm font-light">{{ t('dashboard.hero.subtitle') }}</p>
           </div>
         </div>
-        <div class="bg-background-light -mt-8 rounded-t-3xl p-5 pb-24">
+        <div class="bg-background-light rounded-t-3xl p-5 pb-24">
           <div class="grid grid-cols-2 gap-4">
-            <router-link to="/my-tree" class="flex flex-col gap-3 rounded-2xl bg-white p-5 shadow-soft">
-              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange/10 text-brand-orange">
+            <router-link to="/my-tree" class="flex flex-col gap-3 rounded-2xl bg-white p-5 shadow-soft shadow-lg">
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#FF8C42]/15 text-[#FF8C42]">
                 <Icon icon="material-symbols:spa" class="!text-3xl" />
               </div>
               <div class="flex flex-col gap-1 mt-auto">
@@ -28,8 +51,8 @@ const { t } = useI18n()
                 <p class="text-brand-text-subtle text-sm font-normal leading-normal">{{ t('dashboard.cards.myTree.description') }}</p>
               </div>
             </router-link>
-            <router-link to="/journey" class="flex flex-col gap-3 rounded-2xl bg-white p-5 shadow-soft">
-              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange/10 text-brand-orange">
+            <router-link to="/journey" class="flex flex-col gap-3 rounded-2xl bg-white p-5 shadow-soft shadow-lg">
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#FF8C42]/15 text-[#FF8C42]">
                 <Icon icon="material-symbols:play-circle" class="!text-3xl" />
               </div>
               <div class="flex flex-col gap-1 mt-auto">
@@ -37,8 +60,8 @@ const { t } = useI18n()
                 <p class="text-brand-text-subtle text-sm font-normal leading-normal">{{ t('dashboard.cards.journey.description') }}</p>
               </div>
             </router-link>
-            <router-link to="/gift-box" class="flex flex-col gap-3 rounded-2xl bg-white p-5 shadow-soft">
-              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange/10 text-brand-orange">
+            <router-link to="/gift-box" class="flex flex-col gap-3 rounded-2xl bg-white p-5 shadow-soft shadow-lg">
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#FF8C42]/15 text-[#FF8C42]">
                 <Icon icon="material-symbols:redeem" class="!text-3xl" />
               </div>
               <div class="flex flex-col gap-1 mt-auto">
@@ -46,8 +69,8 @@ const { t } = useI18n()
                 <p class="text-brand-text-subtle text-sm font-normal leading-normal">{{ t('dashboard.cards.giftBox.description') }}</p>
               </div>
             </router-link>
-            <router-link to="/subscription" class="flex flex-col gap-3 rounded-2xl bg-white p-5 shadow-soft">
-              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange/10 text-brand-orange">
+            <router-link to="/subscription" class="flex flex-col gap-3 rounded-2xl bg-white p-5 shadow-soft shadow-lg">
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#FF8C42]/15 text-[#FF8C42]">
                 <Icon icon="material-symbols:credit-card" class="!text-3xl" />
               </div>
               <div class="flex flex-col gap-1 mt-auto">
@@ -58,26 +81,41 @@ const { t } = useI18n()
           </div>
         </div>
       </div>
-      <div class="fixed bottom-0 left-0 w-full px-4 pb-4 pt-2 bg-transparent">
-        <div class="flex items-center justify-around rounded-full bg-white/80 px-4 py-2 shadow-soft backdrop-blur-lg ring-1 ring-black/5">
-          <router-link to="/dashboard" class="flex flex-1 flex-col items-center justify-end gap-1 text-brand-gold">
-            <div class="flex h-8 items-center justify-center">
+      <div class="fixed bottom-0 left-0 w-full px-3 pb-3 pt-1 bg-transparent">
+        <div class="flex items-center justify-around rounded-full bg-white/80 px-3 py-1.5 shadow-soft backdrop-blur-lg ring-1 ring-black/5">
+          <router-link
+            to="/dashboard"
+            class="flex flex-1 flex-col items-center justify-end gap-0.5"
+            :class="activeTab === 'home' ? 'text-yellow-600' : 'text-brand-text-subtle/80'"
+            @click="handleTabClick('home')"
+          >
+            <div class="flex h-6 items-center justify-center">
               <Icon icon="material-symbols:home" class="!text-2xl !font-bold" />
             </div>
             <p class="text-xs font-semibold leading-normal tracking-[0.015em]">{{ t('common.navigation.home') }}</p>
           </router-link>
-          <a class="flex flex-1 flex-col items-center justify-end gap-1 text-brand-text-subtle/80" href="#">
-            <div class="flex h-8 items-center justify-center">
+          <button
+            class="flex flex-1 flex-col items-center justify-end gap-0.5"
+            :class="activeTab === 'shop' ? 'text-yellow-600' : 'text-brand-text-subtle/80'"
+            type="button"
+            @click="handleTabClick('shop')"
+          >
+            <div class="flex h-6 items-center justify-center">
               <Icon icon="material-symbols:storefront" class="!text-2xl" />
             </div>
             <p class="text-xs font-medium leading-normal tracking-[0.015em]">{{ t('common.navigation.shop') }}</p>
-          </a>
-          <a class="flex flex-1 flex-col items-center justify-end gap-1 text-brand-text-subtle/80" href="#">
-            <div class="flex h-8 items-center justify-center">
+          </button>
+          <button
+            class="flex flex-1 flex-col items-center justify-end gap-0.5"
+            :class="activeTab === 'profile' ? 'text-yellow-600' : 'text-brand-text-subtle/80'"
+            type="button"
+            @click="handleTabClick('profile')"
+          >
+            <div class="flex h-6 items-center justify-center">
               <Icon icon="material-symbols:person" class="!text-2xl" />
             </div>
             <p class="text-xs font-medium leading-normal tracking-[0.015em]">{{ t('common.navigation.profile') }}</p>
-          </a>
+          </button>
         </div>
       </div>
     </main>
