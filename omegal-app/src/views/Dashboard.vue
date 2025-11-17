@@ -85,7 +85,7 @@ const handleTabClick = (tab) => {
           <router-link
             to="/dashboard"
             class="flex flex-1 flex-col items-center justify-end gap-0.5"
-            :class="activeTab === 'home' ? 'text-brand-gold' : 'text-brand-text-subtle/80'"
+            :class="activeTab === 'home' ? 'text-yellow-600' : 'text-brand-text-subtle/80'"
             @click="handleTabClick('home')"
           >
             <div class="flex h-6 items-center justify-center">
@@ -95,7 +95,7 @@ const handleTabClick = (tab) => {
           </router-link>
           <button
             class="flex flex-1 flex-col items-center justify-end gap-0.5"
-            :class="activeTab === 'shop' ? 'text-brand-gold' : 'text-brand-text-subtle/80'"
+            :class="activeTab === 'shop' ? 'text-yellow-600' : 'text-brand-text-subtle/80'"
             type="button"
             @click="handleTabClick('shop')"
           >
@@ -106,7 +106,7 @@ const handleTabClick = (tab) => {
           </button>
           <button
             class="flex flex-1 flex-col items-center justify-end gap-0.5"
-            :class="activeTab === 'profile' ? 'text-brand-gold' : 'text-brand-text-subtle/80'"
+            :class="activeTab === 'profile' ? 'text-yellow-600' : 'text-brand-text-subtle/80'"
             type="button"
             @click="handleTabClick('profile')"
           >
