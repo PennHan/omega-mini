@@ -1,4 +1,5 @@
 <script setup>
+import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -9,11 +10,11 @@ const { t } = useI18n()
     <div class="sticky top-0 z-20 bg-background-light/80 backdrop-blur-sm">
       <div class="flex items-center p-4 pb-3">
         <button class="flex items-center justify-center w-10 h-10 text-text-primary">
-          <span class="material-symbols-outlined">arrow_back</span>
+          <Icon icon="material-symbols:arrow-back" class="text-2xl" />
         </button>
         <h2 class="flex-1 text-lg font-bold tracking-tight text-center text-text-primary">{{ t('giftBox.header') }}</h2>
         <button class="flex items-center justify-center w-10 h-10 text-text-primary">
-          <span class="material-symbols-outlined">share</span>
+          <Icon icon="material-symbols:share" class="text-2xl" />
         </button>
       </div>
     </div>
@@ -41,25 +42,25 @@ const { t } = useI18n()
         <details class="p-5 transition-all duration-300 ease-in-out bg-white rounded-2xl shadow-sm" open="">
           <summary class="flex items-center justify-between font-bold cursor-pointer text-text-primary list-none group">
             <span>{{ t('giftBox.insideTitle') }}</span>
-            <span class="transition-transform duration-300 material-symbols-outlined group-open:rotate-180">expand_more</span>
+            <Icon icon="material-symbols:expand-more" class="transition-transform duration-300 group-open:rotate-180" />
           </summary>
           <div class="pt-4 mt-4 border-t border-gray-200">
             <ul class="space-y-4 text-text-primary/90">
               <li class="flex items-center gap-4">
                 <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-blue/10 text-primary-blue">
-                  <span class="material-symbols-outlined">auto_awesome</span>
+                  <Icon icon="material-symbols:auto-awesome" class="text-2xl" />
                 </span>
                 <span class="font-medium">{{ t('giftBox.inside.serum') }}</span>
               </li>
               <li class="flex items-center gap-4">
                 <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-blue/10 text-primary-blue">
-                  <span class="material-symbols-outlined">spa</span>
+                  <Icon icon="material-symbols:spa" class="text-2xl" />
                 </span>
                 <span class="font-medium">{{ t('giftBox.inside.balm') }}</span>
               </li>
               <li class="flex items-center gap-4">
                 <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-blue/10 text-primary-blue">
-                  <span class="material-symbols-outlined">airwave</span>
+                  <Icon icon="material-symbols:airwave" class="text-2xl" />
                 </span>
                 <span class="font-medium">{{ t('giftBox.inside.cream') }}</span>
               </li>
@@ -69,7 +70,7 @@ const { t } = useI18n()
         <details class="p-5 transition-all duration-300 ease-in-out bg-white rounded-2xl shadow-sm">
           <summary class="flex items-center justify-between font-bold cursor-pointer text-text-primary list-none group">
             <span>{{ t('giftBox.fromTreeTitle') }}</span>
-            <span class="transition-transform duration-300 material-symbols-outlined group-open:rotate-180">expand_more</span>
+            <Icon icon="material-symbols:expand-more" class="transition-transform duration-300 group-open:rotate-180" />
           </summary>
           <p class="pt-4 mt-4 text-base leading-relaxed border-t border-gray-200 text-text-primary/80">
             {{ t('giftBox.fromTreeDescription') }}
@@ -91,8 +92,8 @@ const { t } = useI18n()
           <div class="pt-6 space-y-2">
             <div class="relative flex items-start gap-5 timeline-line active">
               <div class="z-10 flex flex-col items-center">
-                <div class="flex items-center justify-center w-8 h-8 rounded-full bg-accent-orange">
-                  <span class="text-white material-symbols-outlined">local_shipping</span>
+                <div class="flex items-center justify-center w-8 h-8 rounded-full bg-accent-orange text-white">
+                  <Icon icon="material-symbols:local-shipping" class="text-xl" />
                 </div>
               </div>
               <div class="pt-1">
@@ -103,7 +104,7 @@ const { t } = useI18n()
             <div class="relative flex items-start gap-5 pt-4 timeline-line">
               <div class="z-10 flex flex-col items-center">
                 <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 text-text-secondary">
-                  <span class="material-symbols-outlined">inventory_2</span>
+                  <Icon icon="material-symbols:inventory-2" class="text-xl" />
                 </div>
               </div>
               <div class="pt-1">
@@ -114,7 +115,7 @@ const { t } = useI18n()
             <div class="relative flex items-start gap-5 pt-4">
               <div class="z-10 flex flex-col items-center">
                 <div class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 text-text-secondary">
-                  <span class="material-symbols-outlined">receipt_long</span>
+                  <Icon icon="material-symbols:receipt-long" class="text-xl" />
                 </div>
               </div>
               <div class="pt-1">
@@ -139,9 +140,6 @@ const { t } = useI18n()
 </template>
 
 <style>
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24
-}
 .timeline-line::before {
   content: '';
   position: absolute;

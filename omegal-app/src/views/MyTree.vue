@@ -1,4 +1,5 @@
 <script setup>
+import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -8,11 +9,11 @@ const { t } = useI18n()
   <div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
     <div class="flex items-center bg-background-light p-4 pb-2 justify-between sticky top-0 z-10">
       <div class="flex size-10 shrink-0 items-center justify-center">
-        <span class="material-symbols-outlined">arrow_back_ios_new</span>
+        <Icon icon="material-symbols:arrow-back-ios-new" class="text-2xl text-subtext-light" />
       </div>
       <h2 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center">{{ t('myTree.header') }}</h2>
       <div class="flex size-10 shrink-0 items-center justify-center">
-        <span class="material-symbols-outlined">ios_share</span>
+        <Icon icon="material-symbols:ios-share" class="text-2xl text-subtext-light" />
       </div>
     </div>
     <div class="px-4">
@@ -37,7 +38,7 @@ const { t } = useI18n()
     <div class="grid grid-cols-2 gap-4 p-4">
       <div class="flex flex-1 flex-col gap-3 rounded-xl bg-card-light p-4 shadow-subtle">
         <div class="text-ome-orange">
-          <span class="material-symbols-outlined">public</span>
+          <Icon icon="material-symbols:public" class="text-[28px]" />
         </div>
         <div class="flex flex-col gap-1">
           <h2 class="text-sm font-medium leading-tight text-subtext-light">{{ t('myTree.stats.region.label') }}</h2>
@@ -46,7 +47,7 @@ const { t } = useI18n()
       </div>
       <div class="flex flex-1 flex-col gap-3 rounded-xl bg-card-light p-4 shadow-subtle">
         <div class="text-ome-orange">
-          <span class="material-symbols-outlined">thermostat</span>
+          <Icon icon="material-symbols:thermostat" class="text-[28px]" />
         </div>
         <div class="flex flex-col gap-1">
           <h2 class="text-sm font-medium leading-tight text-subtext-light">{{ t('myTree.stats.climate.label') }}</h2>
@@ -55,7 +56,7 @@ const { t } = useI18n()
       </div>
       <div class="flex flex-1 flex-col gap-3 rounded-xl bg-card-light p-4 shadow-subtle">
         <div class="text-ome-orange">
-          <span class="material-symbols-outlined">eco</span>
+          <Icon icon="material-symbols:eco" class="text-[28px]" />
         </div>
         <div class="flex flex-col gap-1">
           <h2 class="text-sm font-medium leading-tight text-subtext-light">{{ t('myTree.stats.growth.label') }}</h2>
@@ -64,7 +65,7 @@ const { t } = useI18n()
       </div>
       <div class="flex flex-1 flex-col gap-3 rounded-xl bg-card-light p-4 shadow-subtle">
         <div class="text-ome-orange">
-          <span class="material-symbols-outlined">science</span>
+          <Icon icon="material-symbols:science" class="text-[28px]" />
         </div>
         <div class="flex flex-col gap-1">
           <h2 class="text-sm font-medium leading-tight text-subtext-light">{{ t('myTree.stats.yield.label') }}</h2>
@@ -80,9 +81,4 @@ const { t } = useI18n()
   </div>
 </template>
 
-<style>
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-  font-size: 28px;
-}
-</style>
+

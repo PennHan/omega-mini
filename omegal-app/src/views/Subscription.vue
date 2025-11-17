@@ -1,4 +1,5 @@
 <script setup>
+import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -8,7 +9,7 @@ const { t } = useI18n()
   <div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden pb-24">
     <div class="sticky top-0 z-10 flex items-center bg-background-light p-4 pb-3 justify-between shadow-sm">
       <div class="text-text-light-primary flex size-10 shrink-0 items-center justify-center">
-        <span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+        <Icon icon="material-symbols:arrow-back-ios-new" class="text-2xl" />
       </div>
       <h1 class="text-text-light-primary text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">{{ t('subscription.header') }}</h1>
       <div class="size-10"></div>
@@ -37,19 +38,19 @@ const { t } = useI18n()
     <div class="flex flex-col px-4 gap-2">
       <div class="flex items-center gap-4 bg-white p-4 min-h-14 rounded-lg shadow-sm">
         <div class="text-gold flex items-center justify-center rounded-full bg-gold/10 shrink-0 size-10">
-          <span class="material-symbols-outlined">workspace_premium</span>
+          <Icon icon="material-symbols:workspace-premium" class="text-2xl" />
         </div>
         <p class="text-text-light-primary text-base font-medium leading-normal flex-1 truncate">{{ t('subscription.includes.certificate') }}</p>
       </div>
       <div class="flex items-center gap-4 bg-white p-4 min-h-14 rounded-lg shadow-sm">
         <div class="text-accent flex items-center justify-center rounded-full bg-accent/10 shrink-0 size-10">
-          <span class="material-symbols-outlined">potted_plant</span>
+          <Icon icon="material-symbols:potted-plant" class="text-2xl" />
         </div>
         <p class="text-text-light-primary text-base font-medium leading-normal flex-1 truncate">{{ t('subscription.includes.updates') }}</p>
       </div>
       <div class="flex items-center gap-4 bg-white p-4 min-h-14 rounded-lg shadow-sm">
         <div class="text-accent flex items-center justify-center rounded-full bg-accent/10 shrink-0 size-10">
-          <span class="material-symbols-outlined">redeem</span>
+          <Icon icon="material-symbols:redeem" class="text-2xl" />
         </div>
         <p class="text-text-light-primary text-base font-medium leading-normal flex-1 truncate">{{ t('subscription.includes.giftBox') }}</p>
       </div>
@@ -85,15 +86,4 @@ const { t } = useI18n()
   </div>
 </template>
 
-<style>
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-}
-.text-gradient-gold {
-  background: linear-gradient(to right, #D4AF37, #C09B2D);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-}
-</style>
+
