@@ -2,8 +2,10 @@
 import { computed, ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 
 const { t } = useI18n()
+const router = useRouter()
 const activeTab = ref('details')
 
 const growthLogs = computed(() => [
@@ -53,9 +55,14 @@ const growthLogs = computed(() => [
 <template>
   <div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
     <div class="flex items-center bg-background-light p-4 pb-2 justify-between sticky top-0 z-10">
-      <div class="flex size-10 shrink-0 items-center justify-center">
+      <button
+        type="button"
+        class="flex size-10 shrink-0 items-center justify-center"
+        aria-label="Back"
+        @click="router.back()"
+      >
         <Icon icon="material-symbols:arrow-back-ios-new" class="text-2xl text-subtext-light" />
-      </div>
+      </button>
       <h2 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center">{{ t('myTree.header') }}</h2>
       <div class="flex size-10 shrink-0 items-center justify-center">
         <Icon icon="material-symbols:ios-share" class="text-2xl text-subtext-light" />
@@ -168,5 +175,4 @@ const growthLogs = computed(() => [
     </div>
   </div>
 </template>
-
 
