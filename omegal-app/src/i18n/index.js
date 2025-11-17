@@ -83,6 +83,40 @@ const messages = {
         details: 'Details',
         growth: 'Growth Log',
       },
+      logs: {
+        irrigation: {
+          stage: 'Precision Irrigation',
+          date: 'Mar 02, 2024',
+          description: 'Low-flow emitters delivered a soft pulse to balance early spring moisture.',
+          status: 'Moisture Optimal',
+          metricLabel: 'Soil Moisture',
+          metricValue: '68%',
+        },
+        bloom: {
+          stage: 'Blossom Watch',
+          date: 'Apr 12, 2024',
+          description: 'Gentle coastal winds kept the blossoms stable during peak bloom.',
+          status: 'Flower Retention',
+          metricLabel: 'Bloom Stability',
+          metricValue: '92%',
+        },
+        fruitset: {
+          stage: 'Fruit Set Check',
+          date: 'May 28, 2024',
+          description: 'Young olives measured at 6 mm with healthy clusters across all branches.',
+          status: 'Clusters Formed',
+          metricLabel: 'Average Size',
+          metricValue: '6 mm',
+        },
+        harvestprep: {
+          stage: 'Harvest Prep',
+          date: 'Jun 18, 2024',
+          description: 'Leaf analysis confirmed balanced oils, and nets were scheduled for installation.',
+          status: 'Oil Density',
+          metricLabel: 'Polyphenols',
+          metricValue: '330 mg/kg',
+        },
+      },
       stats: {
         region: {
           label: 'Region',
@@ -288,6 +322,40 @@ const messages = {
       tabs: {
         details: '详情',
         growth: '生长日志',
+      },
+      logs: {
+        irrigation: {
+          stage: '精准灌溉',
+          date: '2024 年 3 月 2 日',
+          description: '低流量滴灌轻柔补水，平衡初春土壤含水量。',
+          status: '水分稳定',
+          metricLabel: '土壤湿度',
+          metricValue: '68%',
+        },
+        bloom: {
+          stage: '花期巡查',
+          date: '2024 年 4 月 12 日',
+          description: '海风温和，帮助花朵在盛花期保持稳定状态。',
+          status: '花量保持',
+          metricLabel: '花序稳定度',
+          metricValue: '92%',
+        },
+        fruitset: {
+          stage: '坐果检测',
+          date: '2024 年 5 月 28 日',
+          description: '幼果平均直径 6 毫米，各枝条均形成健康果串。',
+          status: '果串形成',
+          metricLabel: '平均果径',
+          metricValue: '6 毫米',
+        },
+        harvestprep: {
+          stage: '采收准备',
+          date: '2024 年 6 月 18 日',
+          description: '叶片分析显示油脂平衡，采收网已安排安装。',
+          status: '油脂密度',
+          metricLabel: '多酚含量',
+          metricValue: '330 mg/kg',
+        },
       },
       stats: {
         region: {

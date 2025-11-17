@@ -1,8 +1,53 @@
 <script setup>
+import { computed, ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+const activeTab = ref('details')
+
+const growthLogs = computed(() => [
+  {
+    id: 'irrigation',
+    icon: 'material-symbols:water-drop',
+    stage: t('myTree.logs.irrigation.stage'),
+    date: t('myTree.logs.irrigation.date'),
+    description: t('myTree.logs.irrigation.description'),
+    status: t('myTree.logs.irrigation.status'),
+    metricLabel: t('myTree.logs.irrigation.metricLabel'),
+    metricValue: t('myTree.logs.irrigation.metricValue'),
+  },
+  {
+    id: 'bloom',
+    icon: 'material-symbols:local-florist',
+    stage: t('myTree.logs.bloom.stage'),
+    date: t('myTree.logs.bloom.date'),
+    description: t('myTree.logs.bloom.description'),
+    status: t('myTree.logs.bloom.status'),
+    metricLabel: t('myTree.logs.bloom.metricLabel'),
+    metricValue: t('myTree.logs.bloom.metricValue'),
+  },
+  {
+    id: 'fruitset',
+    icon: 'material-symbols:sprint',
+    stage: t('myTree.logs.fruitset.stage'),
+    date: t('myTree.logs.fruitset.date'),
+    description: t('myTree.logs.fruitset.description'),
+    status: t('myTree.logs.fruitset.status'),
+    metricLabel: t('myTree.logs.fruitset.metricLabel'),
+    metricValue: t('myTree.logs.fruitset.metricValue'),
+  },
+  {
+    id: 'harvestprep',
+    icon: 'material-symbols:eco',
+    stage: t('myTree.logs.harvestprep.stage'),
+    date: t('myTree.logs.harvestprep.date'),
+    description: t('myTree.logs.harvestprep.description'),
+    status: t('myTree.logs.harvestprep.status'),
+    metricLabel: t('myTree.logs.harvestprep.metricLabel'),
+    metricValue: t('myTree.logs.harvestprep.metricValue'),
+  },
+])
 </script>
 
 <template>
@@ -24,18 +69,38 @@ const { t } = useI18n()
       <p class="text-subtext-light mt-1">{{ t('myTree.tagline') }}</p>
     </div>
     <div class="flex px-4 py-4">
-      <div class="flex h-12 flex-1 items-center justify-center rounded-full bg-gray-100 p-1">
-        <label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-full px-2 has-[:checked]:bg-ome-blue has-[:checked]:text-white text-subtext-light text-sm font-semibold leading-normal transition-all duration-300">
+      <div class="flex h-12 flex-1 items-center justify-center rounded-full bg-white p-1 shadow-soft shadow-lg ring-1 ring-black/5">
+        <label
+          class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-full px-3 text-subtext-light text-sm font-semibold leading-normal transition-all duration-300"
+          :class="activeTab === 'details' ? 'bg-gradient-to-r from-[#FFE9B0] via-[#FAD989] to-[#F1CB72] text-[#7A5B1D] shadow-inner' : ''"
+        >
           <span class="truncate">{{ t('myTree.tabs.details') }}</span>
-          <input checked="" class="invisible w-0" name="tree-info-tabs" type="radio" value="Details"/>
+          <input
+            class="sr-only"
+            type="radio"
+            name="tree-info-tabs"
+            value="details"
+            :checked="activeTab === 'details'"
+            @change="activeTab = 'details'"
+          />
         </label>
-        <label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-full px-2 has-[:checked]:bg-ome-blue has-[:checked]:text-white text-subtext-light text-sm font-semibold leading-normal transition-all duration-300">
+        <label
+          class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-full px-3 text-subtext-light text-sm font-semibold leading-normal transition-all duration-300"
+          :class="activeTab === 'growth' ? 'bg-gradient-to-r from-[#FFE9B0] via-[#FAD989] to-[#F1CB72] text-[#7A5B1D] shadow-inner' : ''"
+        >
           <span class="truncate">{{ t('myTree.tabs.growth') }}</span>
-          <input class="invisible w-0" name="tree-info-tabs" type="radio" value="Growth Log"/>
+          <input
+            class="sr-only"
+            type="radio"
+            name="tree-info-tabs"
+            value="growth"
+            :checked="activeTab === 'growth'"
+            @change="activeTab = 'growth'"
+          />
         </label>
       </div>
     </div>
-    <div class="grid grid-cols-2 gap-4 p-4">
+    <div v-if="activeTab === 'details'" class="grid grid-cols-2 gap-4 p-4">
       <div class="flex flex-1 flex-col gap-3 rounded-xl bg-card-light p-4 shadow-soft shadow-lg">
         <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#FF8C42]/15 text-[#FF8C42]">
           <Icon icon="material-symbols:public" class="!text-3xl" />
@@ -70,6 +135,29 @@ const { t } = useI18n()
         <div class="flex flex-col gap-1">
           <h2 class="text-sm font-medium leading-tight text-subtext-light">{{ t('myTree.stats.yield.label') }}</h2>
           <p class="text-base font-semibold leading-normal text-text-light">{{ t('myTree.stats.yield.value') }}</p>
+        </div>
+      </div>
+    </div>
+    <div v-else class="flex flex-col gap-4 px-4 pb-6">
+      <div
+        v-for="log in growthLogs"
+        :key="log.id"
+        class="flex gap-4 rounded-2xl bg-white/95 p-4 shadow-soft shadow-lg ring-1 ring-black/5 backdrop-blur"
+      >
+        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FDECC9] text-[#C17F2A]">
+          <Icon :icon="log.icon" class="!text-2xl" />
+        </div>
+        <div class="flex flex-1 flex-col gap-2">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <p class="text-base font-semibold leading-tight text-text-light">{{ log.stage }}</p>
+            <span class="text-xs font-medium text-subtext-light">{{ log.date }}</span>
+          </div>
+          <p class="text-sm text-subtext-light">{{ log.description }}</p>
+          <div class="flex flex-wrap items-center gap-2 pt-1">
+            <span class="rounded-full bg-[#F8E5BB] px-3 py-1 text-xs font-semibold text-[#8A5B10]">{{ log.status }}</span>
+            <span class="text-xs text-subtext-light">{{ log.metricLabel }}</span>
+            <span class="text-sm font-semibold text-text-light">{{ log.metricValue }}</span>
+          </div>
         </div>
       </div>
     </div>
