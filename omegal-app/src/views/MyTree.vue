@@ -1,12 +1,34 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const { t } = useI18n()
 const router = useRouter()
+const route = useRoute()
 const activeTab = ref('details')
+const bottomActiveTab = ref('my-tree')
+
+const syncBottomActiveTab = (path) => {
+  if (path === '/dashboard') {
+    bottomActiveTab.value = 'home'
+  } else if (path === '/my-tree') {
+    bottomActiveTab.value = 'my-tree'
+  }
+}
+
+watch(
+  () => route.path,
+  (path) => {
+    syncBottomActiveTab(path)
+  },
+  { immediate: true }
+)
+
+const handleBottomTabClick = (tab) => {
+  bottomActiveTab.value = tab
+}
 
 const growthLogs = computed(() => [
   {
@@ -172,6 +194,54 @@ const growthLogs = computed(() => [
       <button class="flex h-14 w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#F9E18B] via-[#F2C964] to-[#E5B347] px-6 text-base font-bold text-white shadow-lg shadow-primary-blue/30 transition-transform duration-200 ease-in-out hover:scale-[1.02]">
         {{ t('myTree.action') }}
       </button>
+    </div>
+    <div class="fixed bottom-0 left-0 w-full px-3 pb-3 pt-1 bg-transparent">
+      <div class="flex items-center justify-around rounded-full bg-white/80 px-3 py-1.5 shadow-soft backdrop-blur-lg ring-1 ring-black/5">
+        <router-link
+          to="/dashboard"
+          class="flex flex-1 flex-col items-center justify-end gap-0.5"
+          :class="bottomActiveTab === 'home' ? 'text-yellow-600' : 'text-brand-text-subtle/80'"
+          @click="handleBottomTabClick('home')"
+        >
+          <div class="flex h-6 items-center justify-center">
+            <Icon icon="material-symbols:home" class="!text-2xl !font-bold" />
+          </div>
+          <p class="text-xs font-semibold leading-normal tracking-[0.015em]">{{ t('common.navigation.home') }}</p>
+        </router-link>
+        <router-link
+          to="/my-tree"
+          class="flex flex-1 flex-col items-center justify-end gap-0.5"
+          :class="bottomActiveTab === 'my-tree' ? 'text-yellow-600' : 'text-brand-text-subtle/80'"
+          @click="handleBottomTabClick('my-tree')"
+        >
+          <div class="flex h-6 items-center justify-center">
+            <Icon icon="material-symbols:spa" class="!text-2xl" />
+          </div>
+          <p class="text-xs font-medium leading-normal tracking-[0.015em]">{{ t('dashboard.cards.myTree.title') }}</p>
+        </router-link>
+        <button
+          class="flex flex-1 flex-col items-center justify-end gap-0.5"
+          :class="bottomActiveTab === 'shop' ? 'text-yellow-600' : 'text-brand-text-subtle/80'"
+          type="button"
+          @click="handleBottomTabClick('shop')"
+        >
+          <div class="flex h-6 items-center justify-center">
+            <Icon icon="material-symbols:storefront" class="!text-2xl" />
+          </div>
+          <p class="text-xs font-medium leading-normal tracking-[0.015em]">{{ t('common.navigation.shop') }}</p>
+        </button>
+        <button
+          class="flex flex-1 flex-col items-center justify-end gap-0.5"
+          :class="bottomActiveTab === 'profile' ? 'text-yellow-600' : 'text-brand-text-subtle/80'"
+          type="button"
+          @click="handleBottomTabClick('profile')"
+        >
+          <div class="flex h-6 items-center justify-center">
+            <Icon icon="material-symbols:person" class="!text-2xl" />
+          </div>
+          <p class="text-xs font-medium leading-normal tracking-[0.015em]">{{ t('common.navigation.profile') }}</p>
+        </button>
+      </div>
     </div>
   </div>
 </template>
