@@ -298,7 +298,7 @@ const messages = {
       },
       cards: {
         myTree: {
-          title: '我的橄榄树',
+          title: '我的橄欖樹',
           description: '查看树木状态',
         },
         journey: {
