@@ -11,6 +11,8 @@ const activeTab = ref('home')
 const syncActiveTab = (path) => {
   if (path === '/dashboard') {
     activeTab.value = 'home'
+  } else if (path === '/my-tree') {
+    activeTab.value = 'my-tree'
   }
 }
 
@@ -92,6 +94,17 @@ const handleTabClick = (tab) => {
               <Icon icon="material-symbols:home" class="!text-2xl !font-bold" />
             </div>
             <p class="text-xs font-semibold leading-normal tracking-[0.015em]">{{ t('common.navigation.home') }}</p>
+          </router-link>
+          <router-link
+            to="/my-tree"
+            class="flex flex-1 flex-col items-center justify-end gap-0.5"
+            :class="activeTab === 'my-tree' ? 'text-yellow-600' : 'text-brand-text-subtle/80'"
+            @click="handleTabClick('my-tree')"
+          >
+            <div class="flex h-6 items-center justify-center">
+              <Icon icon="material-symbols:spa" class="!text-2xl" />
+            </div>
+            <p class="text-xs font-medium leading-normal tracking-[0.015em]">我的橄榄树</p>
           </router-link>
           <button
             class="flex flex-1 flex-col items-center justify-end gap-0.5"
